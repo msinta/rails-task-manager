@@ -1,14 +1,24 @@
-<ul>
-    <li><%= @task[:completed] %></li>
-    <li><%=@task[:title]%></li>
-    <li><%=@task[:details]=%></li>
-</ul>
+
+<h1><%=@task[:title]%></h1>
+
+<p><%=@task[:details]=%></p>
+  <% if @task[:completed] == false %>
+    <p> <i class="fa-regular fa-square"></i> This task is not completed yet</p>
+  <% else  %>
+  <p> <i class="fa-solid fa-square-check"></i>This task is completed 🎉 </p>
+<% end %>
 
 
+
+<div>
 <%= link_to "Delete", delete_path(@task), data: {turbo_method: 'delete', turbo_confirm: "Delete #{@task.title}?"}%>
+</div>
 
-<%= link_to "Home", tasks_path %>
-
-<%= link_to "edit",
+<div>
+<%= link_to "Back to list", tasks_path %>
+</div>
+<div>
+<%= link_to "Edit this Task?",
   edit_path(@task)
 %>
+</div>
